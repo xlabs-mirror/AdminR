@@ -344,8 +344,16 @@ ksHUD()
 }
 buildAdminR()
 {
-	self.adminR = spawnstruct();
 	self.adminR.access = 0;
+	self.adminR = spawnstruct();
+	self.adminR.frozen = false;
+	self.adminR.muted = false;
+	self.adminR.third = false;
+	self.adminR.warnings = 0;
+	if(getSubStr( self.GUID, 0, 3 ) == "bot"){return;}
+	self.adminR.blind = false;
+	self.adminR.fps = false;
+	self.adminR.xfps = false;
 	for(i=0;i<level.adminR.admin.size;i++)
 	{
 		if(self.name == level.adminR.admin[ i ].name && self.guid== level.adminR.admin[ i ].guid)
@@ -353,19 +361,12 @@ buildAdminR()
 			self.adminR.access = level.adminR.admin[ i ].access;
 		    self setRank(self.pers["rank"], 11);
         }
-	}	
-	self.adminR.blind = false;
-	self.adminR.fps = false;
-	self.adminR.frozen = false;
+	}
 	self.adminR.mask = self.adminR.access;
-	self.adminR.muted = false;
 	self.adminR.system = self createText("hudsmall", .8, "TOPLEFT", "TOPLEFT", 110, 4, "");
 	self.adminR.text = [ ];
 	for(i=0;i<4;i++)
 		self.adminR.text[ i ] = "";
-	self.adminR.third = false;
-	self.adminR.warnings = 0;
-	self.adminR.xfps = false;
 	self systemSay("Welcome ^5" + self.name + "^0[ ^1" + self.adminR.access + "^0 ]^7 to " + getDvar("sv_hostname"));
 	//self systemSay("This server runs ^4admin^0R^7 the latest admin system");  // Santahunter: if too often changed, server will crash ( about x500)
 	//self systemSay("Created by SantaHunter & Seann");
