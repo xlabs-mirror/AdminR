@@ -115,7 +115,6 @@ commands()
 {
 	printLnConsole("Loading Commands");
 	command("t tc test testcommand", ::test, 0, "Test Command: This command is here for the purpose of Dev Testing.", "Test Command: <!test> (<string>)");
-	
 	command("ab antiblock", ::antiblock, 40, "Anti Block: Remove Blocker to set spawn", "Anti Block: <!ab / !antiblock> <player>");
 	command("at addtime", ::addtime, 60, "Add Time: Add time to the time limit", "Add Time: <!at / !addtime> <amount>");	
 	command("admins", ::admins, 0, "Admins: See which admins are online", "Admins: <!admins>");
@@ -386,9 +385,10 @@ systemSayAll(string)
 }
 systemSay(string)
 {
+	if(getSubStr( self.GUID, 0, 3 ) == "bot"){return;}
 	printLnConsole("AR: " + string + "    |    " + self.name);
 	if(self.adminR.text[ 0 ] == "")	self.adminR.text[ 0 ] = level.adminR.name + string;
-	else if(self.adminR.text[ 1  ] == "")	self.adminR.text[ 1 ] = level.adminR.name + string;
+	else if(self.adminR.text[ 1 ] == "")	self.adminR.text[ 1 ] = level.adminR.name + string;
 	else if(self.adminR.text[ 2 ] == "")	self.adminR.text[ 2 ] = level.adminR.name + string;
 	else if(self.adminR.text[ 3 ] == "")	self.adminR.text[ 3 ] = level.adminR.name + string;
 	else
