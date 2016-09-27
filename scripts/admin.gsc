@@ -34,15 +34,18 @@ adminR()
 adminRs()
 {
 	printLnConsole("Loading Admins");
+	
+//	ADD OR REMOVE ADMINS BELOW <=====
+
 	admin("Seann", "0110000100005bf8", 100);
-    admin("Santahunter", "01100001000323e5", 100);
+	admin("Santahunter", "01100001000323e5", 100);
 	admin("-Yuvalpre-", "011000010007b095", 60);
 	admin("saladass", "0110000100067fc9", 60);
 	admin("Bluscream", "01100001000021af", 100);
-	
-	// ADD HERE YOUR ADMINS
-	// admin("name", "xuid", rights); // type "clientinfo" into console to find out your xuid
-	
+//	admin("name", "xuid", rights); // type "clientinfo" into console to find out your xuid
+
+//	ADD OR REMOVE ADMINS ABOVE <=====
+
 	printLnConsole("Admins Successfully Loaded.");
 }
 admin(string, byte, int)
